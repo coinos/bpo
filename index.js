@@ -1,5 +1,3 @@
-import got from "got";
-
 export default ({ host, port, wallet, username, password }) =>
   new Proxy(
     {},
@@ -7,20 +5,20 @@ export default ({ host, port, wallet, username, password }) =>
       get: (target, prop) => (...params) =>
         ((method, ...params) => {
           let url = `http://${host}:${port}/wallet/${wallet}`;
-          return got
-            .post(url, {
-              json: {
+          return fetch(url, {
+            method: "POST",
+              body: JSON.stringify({
                 method,
                 params
-              },
+              }),
               headers: {
+                          "content-type": "application/json",
                 authorization: `Basic ${Buffer.from(
                   `${username}:${password}`
                 ).toString("base64")}`
               }
             })
-            .json()
-            .then(({ result }) => result);
+                .then(r => r.json()).then(({ result }) => result);
         })(prop.toLowerCase(), ...params)
     }
   );
