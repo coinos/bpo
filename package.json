@@ -6,5 +6,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "repository": "github:coinos/bpo"
 }
