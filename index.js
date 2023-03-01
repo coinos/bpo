@@ -1,6 +1,6 @@
 let { RPCHOST, RPCPORT, RPCUSER, RPCPASS, RPCWALLET } = process.env;
 
-export default ({ host = RPCHOST, port = RPCPORT, wallet = RPCWALLET, username = RPCUSER, password = RPCPASSWORD }) =>
+export default ({ host = RPCHOST, port = RPCPORT, wallet = RPCWALLET, username = RPCUSER, password = RPCPASS }) =>
   new Proxy(
     {},
     {
