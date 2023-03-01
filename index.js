@@ -2,23 +2,26 @@ export default ({ host, port, wallet, username, password }) =>
   new Proxy(
     {},
     {
-      get: (target, prop) => (...params) =>
-        ((method, ...params) => {
-          let url = `http://${host}:${port}/wallet/${wallet}`;
-          return fetch(url, {
-            method: "POST",
+      get:
+        (target, prop) =>
+        (...params) =>
+          ((method, ...params) => {
+            let url = `http://${host}:${port}/wallet/${wallet}`;
+            return fetch(url, {
+              method: "POST",
               body: JSON.stringify({
                 method,
-                params
+                params,
               }),
               headers: {
-                          "content-type": "application/json",
+                "content-type": "application/json",
                 authorization: `Basic ${Buffer.from(
                   `${username}:${password}`
-                ).toString("base64")}`
-              }
+                ).toString("base64")}`,
+              },
             })
-                .then(r => r.json()).then(({ result }) => result);
-        })(prop.toLowerCase(), ...params)
+              .then((r) => r.json())
+              .then(({ result }) => result);
+          })(prop.toLowerCase(), ...params),
     }
   );
