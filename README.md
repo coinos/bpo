@@ -13,7 +13,6 @@
       port: 18443,
       username: "rpcuser",
       password: "rpcpass",
-      network: "regtest",
       wallet: "wallet",
     });
 
