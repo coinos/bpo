@@ -1,0 +1,9 @@
+{
+  "name": "bpo",
+  "version": "1.0.0",
+  "description": "Bitcoin proxy object",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
